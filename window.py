@@ -1,4 +1,7 @@
 #!/usr/bin/python
+import os
+import getpass
+
 import gi
 
 gi.require_version('Gtk', '3.0')
@@ -24,11 +27,55 @@ window.show_all()
 Input = builder.get_object("Input")
 Output = builder.get_object("Output")
 
+# Initialize variables and home directory
+user = getpass.getuser()
+directory = "/home/" + user
+output_text = ""
+os.chdir(directory)
+
+
+# Send the output of a command to the scroll view
+def output(text):
+    global output_text
+    # get the Output text view buffer
+    buffer = Output.get_buffer()
+    # Print text to buffer
+    output_text = text + "\n" + output_text
+    buffer.set_text(output_text)
+    return
+
 
 # Parse the input string
+# This is where you can add commands.
+# Please add them where they belong alphabetically
+# TODO save the command in a history file
 def parse_input(text):
-    print(text)
-    return 0
+    # print the command to output
+    output(text)
+    # Using the globally defined directory
+    global directory
+    # The return code
+    success = 0
+    # split the text into an array of arguments
+    args = text.split()
+    # If enter is pressed alone then add a new line
+    if len(args) == 0:
+        output("")
+    # floo = cd
+    elif args[0] == "floo":
+        if len(args) > 1:
+            if len(args) > 1:
+                directory = args[1]
+            else:
+                directory = "/home/" + user
+        os.chdir(directory)
+        directory = os.getcwd()
+        output(directory)
+    else:
+        # TODO make more magic happen when you enter a spell that isn't listed
+        output(" command not found!")
+
+    return success
 
 
 def tab_autocomplete():
