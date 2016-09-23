@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.18.3 -->
+<interface>
+  <requires lib="gtk+" version="3.12"/>
+  <object class="GtkApplicationWindow" id="applicationwindow1">
+    <property name="width_request">600</property>
+    <property name="height_request">300</property>
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Terminal Spellbook</property>
+    <property name="window_position">center</property>
+    <child>
+      <object class="GtkBox" id="box1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolledwindow1">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hscrollbar_policy">never</property>
+            <child>
+              <object class="GtkTextView" id="Output">
+                <property name="visible">True</property>
+                <property name="app_paintable">True</property>
+                <property name="can_focus">True</property>
+                <property name="vscroll_policy">natural</property>
+                <property name="editable">False</property>
+                <property name="wrap_mode">char</property>
+                <property name="cursor_visible">False</property>
+                <property name="accepts_tab">False</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkTextView" id="Input">
+            <property name="name">Input</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="app_paintable">True</property>
+            <property name="can_focus">True</property>
+            <property name="has_focus">True</property>
+            <property name="is_focus">True</property>
+            <property name="valign">end</property>
+            <property name="wrap_mode">char</property>
+            <property name="accepts_tab">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
